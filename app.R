@@ -5,6 +5,7 @@
 ## Borough and Parish respectively
 
 library(shiny)
+library(dplyr)
 library(openintro,warn.conflicts = FALSE)
 states<- unique(county$state)
 
