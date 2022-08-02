@@ -42,7 +42,7 @@ server <- function(input, output, session) {
     })
     
     output$table<- renderTable({
-        head(names_of_county())
+       names_of_county()[names_of_county()$name== input$county,]
     })
 }
 
