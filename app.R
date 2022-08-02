@@ -3,6 +3,7 @@
 ## changes the county label for 
 ## Alaska and  Louisiana to
 ## Borough and Parish respectively
+##display the table of county selected
 
 library(shiny)
 library(dplyr)
