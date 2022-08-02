@@ -3,7 +3,7 @@
 ## changes the county label for 
 ## Alaska and  Louisiana to
 ## Borough and Parish respectively
-##display the table of county selected
+## displays the table of the selected county
 
 library(shiny)
 library(dplyr)
@@ -33,18 +33,21 @@ server <- function(input, output, session) {
         choices<- unique(names_of_county()$name)
         updateSelectInput(inputId = "county",choices = choices )
     })
-    observeEvent(input$state,{
-        label<- if(input$state=="Louisiana")
+    observeEvent(input$state, {
+        label<- if(input$state=="Louisiana") {
             paste("Parish")
-        else if(input$state=="Alaska")
+        } else if(input$state=="Alaska") {
             paste("Borough")
-        else("County")
+        } else {
+            paste("County")
+        }
         updateActionButton(inputId = "county",label=label)
     })
     
     output$table<- renderTable({
-       names_of_county()[names_of_county()$name== input$county,]
+        names_of_county()[names_of_county()$name== input$county,]
     })
 }
 
 shinyApp(ui, server)
+
